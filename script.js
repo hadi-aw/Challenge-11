@@ -19,3 +19,11 @@ const svg = d3.select('body').append('svg')
     .append('rect')
     .attr('width', d => xScale(d))
     .attr('height', 20);
+
+    // Add text labels to each bar
+    svg.selectAll('g')
+    .append('text')
+    .attr('x', d => xScale(d) - 3) // Position text inside the bar, slightly offset from the end
+    .attr('y', 20 / 2)
+    .attr('dy', '.35em') // Vertically center
+    .text(d => d);
