@@ -27,3 +27,23 @@ const svg = d3.select('body').append('svg')
     .attr('y', 20 / 2)
     .attr('dy', '.35em') // Vertically center
     .text(d => d);
+
+    // Implement transitions and hover effects for bars
+    svg.selectAll('rect')
+    .transition()
+    .duration(800)
+    .attr('width', d => xScale(d));
+
+svg.selectAll('rect')
+    .on('mouseover', function() {
+        d3.select(this)
+            .transition()
+            .duration(200)
+            .style('fill', 'orange');
+    })
+    .on('mouseout', function() {
+        d3.select(this)
+            .transition()
+            .duration(200)
+            .style('fill', 'black');
+    });
